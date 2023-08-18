@@ -41,9 +41,9 @@ app.get("/api/posts", (req: Request, res: Response) => {
 
   if (process.env.NODE_ENV === "production") {
     // Fetch from cache
-    posts = require("../../cache/data").posts;
+    posts = require("../cache/data").posts;
   } else {
-    const postDir = path.join(__dirname, "..", "..", "posts");
+    const postDir = path.join(__dirname, "..", "posts", "posts");
 
     console.log(postDir);
 
