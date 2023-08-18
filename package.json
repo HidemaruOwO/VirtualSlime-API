@@ -8,9 +8,10 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/app.js",
-    "build": "tsc",
+    "build": "bin/downloadCache.sh && bin/getPosts.sh && tsc",
     "dev": "ts-node src/app.ts",
-    "cache": "bin/downloadCache.sh"
+    "get-cache": "bin/downloadCache.sh",
+    "get-post": "bin/getPosts.sh"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
