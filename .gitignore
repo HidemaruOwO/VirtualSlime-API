@@ -2,7 +2,11 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
 dist/
 
+posts/
+
 cache/data.ts
+
+cache/data.js
 ### Node ###
 # Logs
 logs
