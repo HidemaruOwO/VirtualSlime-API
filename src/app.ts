@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from "express";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { spawn } from "child_process";
 
 // Types imports
 import { Frontmatter, Post } from "./interface";
@@ -31,6 +32,23 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   }
   next();
 });
+
+const nextDay = () => new Date().setHours(0, 0, 0, 0) + 24 * 60 * 60 * 1000;
+const tommorowFromNow = () => {
+  const tomorrowTimestamp = nextDay();
+  const nowTimestamp = new Date().getTime();
+  const timeDifferenceInMilliseconds = tomorrowTimestamp - nowTimestamp;
+  return timeDifferenceInMilliseconds;
+};
+
+setTimeout(() => {
+  spawn("yarn", ["get-cache"]).stdout.on("data", (chunk) => {
+    console.log(chunk.toString());
+  });
+  spawn("yarn", ["get-posts"]).stdout.on("data", (chunk) => {
+    console.log(chunk.toString());
+  });
+}, tommorowFromNow());
 
 app.get("/", (req: Request, res: Response) => {
   res.status(200).send("Running Virtual Slime API");
