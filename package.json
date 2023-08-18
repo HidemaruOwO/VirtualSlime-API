@@ -7,7 +7,7 @@
   "author": "HidemaruOwO <hidemal@outlook.jp>",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "node dist/src/app.js",
     "build": "bin/downloadCache.sh && bin/getPosts.sh && tsc",
     "dev": "ts-node src/app.ts",
     "get-cache": "bin/downloadCache.sh",
