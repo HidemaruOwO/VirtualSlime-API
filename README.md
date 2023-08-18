@@ -2,10 +2,20 @@
 
 ## Usage
 
-### Install Dependencies
+### Setup
 
-```bash
+```
+git clone https://github.com/HidemaruOwO/VirtualSlime
+git submodule update --init
+
 yarn install
+yarn run cache-posts
+
+cd VirtualSlime-API
+yarn install
+
+yarn build
+NODE_ENV=production yarn start
 ```
 
 ### Test dev (localhost:3001)
