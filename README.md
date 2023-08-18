@@ -5,13 +5,8 @@
 ### Setup
 
 ```
-git clone https://github.com/HidemaruOwO/VirtualSlime
-git submodule update --init
+git clone https://github.com/HidemaruOwO/VirtualSlime-API
 
-yarn install
-yarn run cache-posts
-
-cd VirtualSlime-API
 yarn install
 
 yarn build
