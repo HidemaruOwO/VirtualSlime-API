@@ -6,17 +6,16 @@
 
 ```
 git clone https://github.com/HidemaruOwO/VirtualSlime-API
+cd VirtualSlime-API
 
-yarn install
-
-yarn build
-NODE_ENV=production yarn start
+# Edit .env file
+vim .env
 ```
 
 ### Test dev (localhost:3001)
 
 ```bash
-yarn dev
+VIRTUALSLIME_DIR=~/Code/VirtualSlime DEBUG=true go run src/main.go
 ```
 
 ## Use Product
@@ -24,21 +23,32 @@ yarn dev
 ### Build
 
 ```bash
-yarn build
+go build -ldflags="-s -w" -trimpath
+mv main virtualslime
 ```
 
 ### Start
 
 ```bash
-NODE_ENV=production yarn start
+APP_ENV=production ./virtualslime
 ```
+
+## Environment
+
+- `DOMAIN`: (need) string Value: `Your domain name (ex. v-sli.me)`
+- `APP_ENV`: (product only need) string Value: `production`
+- `PORT`: (optional) int16 Value: `App listen port (default: 3000)`
+
+### For development
+
+- `VIRTUALSLIME_DIR`: (development only need) string Value: `VirtualSlime directory (ex. ~/Code/VirtualSlime)`
 
 ## API Documents
 
-- /api/posts
+- /v1/posts
 
 ```
-GET api.v-sli.me/api/posts?q=<Query>
+GET api.v-sli.me/v1/posts?q=<SearchWord>
 ```
 
 `?q` : Search text : `string+string+string....`
