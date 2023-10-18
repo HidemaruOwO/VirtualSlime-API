@@ -57,9 +57,10 @@ jobs:
 
       - name: Rename file
         run: mv main virtualslime
+        shell: bash
 
       - name: Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: VirtualSlimeAPI_{{ matrix.target }}
+          name: VirtualSlimeAPI_${{ matrix.target }}
           path: virtualslime
