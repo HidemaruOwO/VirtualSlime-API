@@ -33,7 +33,7 @@ jobs:
           exit 1
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Extract branch name
@@ -41,11 +41,11 @@ jobs:
         run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         shell: bash
         id: extract_branch
+
       - name: Setup
-        # run: echo "Set up your programming language here."
         uses: actions/setup-go@v4
-      # - name: Install formatter
-      # run: echo "Install formatter (Example; npm install prettier)"
+        with:
+          go-version-file: "go.mod"
 
       - name: Format code
         uses: golangci/golangci-lint-action@v3
