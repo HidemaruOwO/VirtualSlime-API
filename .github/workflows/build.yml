@@ -56,7 +56,7 @@ jobs:
         run: go build -ldflags="-s -w" -trimpath src/main.go
 
       - name: Rename file
-        run: mv main virtualslime
+        run: mv main virtualslime && ls
         shell: bash
 
       - name: Artifact
