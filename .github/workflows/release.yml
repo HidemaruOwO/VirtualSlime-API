@@ -38,18 +38,13 @@ jobs:
           echo "status ${{ steps.test_result.outputs.failedCheckStates }}"
           exit 1
       - name: Checkout Sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup
-        run: echo "Set up your programming language here."
-        # これらをuseしてセットアップをしてください
-        # uses: actions/setup-go@v2
-        #
-      - name: Build
-        run: echo "Build from src here."
-        # ./build.sh
-
+        uses: actions/setup-go@v4
       - name: Release
-        run: echo "Release flow here."
+        uses: goreleaser/goreleaser-action@v5
         # これらを使いましょう
         # https://github.com/actions/upload-artifact
         # Goの場合はhttps://github.com/goreleaser/goreleaser-action が使えます

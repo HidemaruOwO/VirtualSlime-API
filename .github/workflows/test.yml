@@ -17,8 +17,8 @@ jobs:
       - name: Test
         id: test_step
         continue-on-error: true
-        run: |
-          echo "Write Test here"
+        run: go build -ldflags="-s -w" -trimpath src/main.go
+
       - name: Set Check Status Success
         uses: Sibz/github-status-action@v1
         if: steps.test_step.outcome == 'success'
