@@ -36,6 +36,7 @@ APP_ENV=production ./virtualslime
 -   `DOMAIN`：（需要）字串值：`Your domain name (ex. v-sli.me)`
 -   `APP_ENV`：（產品只需）字串值：`production`
 -   `PORT`：（可選）int16 值：`App listen port (default: 3000)`
+-   `DEBUG`：（可選）布林值：`Make Debug Mode (ex. true or false, default: false)`
 
 ### 為了發展
 
