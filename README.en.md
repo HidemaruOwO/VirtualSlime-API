@@ -1,84 +1,51 @@
-<div align="center">
+# VirtualSlime-API
 
-# Awesome Repository 🎨
+## Usage
 
-<!-- s;HidemaruOwO/Awesome-Repository;User/Repository;g -->
+### Setup
 
-[![Test CLI](https://github.com/HidemaruOwO/Awesome-Repository/actions/workflows/test.yml/badge.svg)](https://github.com/HidemaruOwO/Awesome-Repository/actions/workflows/test.yml)![最終コミット](https://img.shields.io/github/last-commit/HidemaruOwO/Awesome-Repository?style=flat-square)![リポジトリのスター](https://img.shields.io/github/stars/HidemaruOwO/Awesome-Repository?style=flat-square)![問題](https://img.shields.io/github/issues/HidemaruOwO/Awesome-Repository?style=flat-square)![オープンな問題](https://img.shields.io/github/issues-raw/HidemaruOwO/Awesome-Repository?style=flat-square)![バグの問題](https://img.shields.io/github/issues/HidemaruOwO/Awesome-Repository/bug?style=flat-square)
+    git clone https://github.com/HidemaruOwO/VirtualSlime-API
+    cd VirtualSlime-API
 
-![image](https://github.com/HidemaruOwO/Awesome-Repository/assets/82384920/bf4ccddf-3eae-4fae-97f4-d2b59bec919f)
+    # Edit .env file
+    vim .env
 
-## What is this?
-
-More awesome repository templates.
-
-</div>
-
--   Select Language
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:center"><a href="README.md">🎌日本語</a></th>
-      <th style="text-align:center"><a href="README.en.md">🤡English</a></th>
-      <th style="text-align:center"><a href="README.zh-CN.md">🐉简体中文</a></th>
-      <th style="text-align:center"><a href="README.zh-TW.md">🍜繁体中文</a></th>
-      <th style="text-align:center"><a href="README.ko.md">🌸한국어</a></th>
-    </tr>
-  </thead>
-</table>
-
-## Usage 💨
-
-Please run this script.
+### Test dev (localhost:3001)
 
 ```bash
-./run.sh
+VIRTUALSLIME_DIR=~/Code/VirtualSlime DEBUG=true go run src/main.go
 ```
 
-## Install 😊
+## Use Product
 
-Please run this script.
+### Build
 
 ```bash
-./install.sh
+go build -ldflags="-s -w" -trimpath
+mv main virtualslime
 ```
 
-## Build 🔨
+### Start
 
 ```bash
-git clone https://github.com/HidemaruOwO/Awesome-Repository.git
-cd Awesome-Repository.git
-mkdir build && cd build
-go build ../build.sh
+APP_ENV=production ./virtualslime
 ```
 
-## Dependencies 🪡
+## Environment
 
-To use this app, please register the following command in your path.
+-   `DOMAIN`: (need) string Value: `Your domain name (ex. v-sli.me)`
+-   `APP_ENV`: (product only need) string Value:`production`
+-   `PORT`: (optional) int16 Value:`App listen port (default: 3000)`
 
--   `git`
+### For development
 
-## Repository Tools 🔧
+-   `VIRTUALSLIME_DIR`: (development only need) string Value:`VirtualSlime directory (ex. ~/Code/VirtualSlime)`
 
--   [ ] Dependabot setup
--   [ ] CodeQL setup
+## API Documents
 
-<details>
-<summary>メモ</summary>
+-   /v1/posts
 
--   Dependabot setup
-    -   `.github/dependabot.yml`of`package-ecosystem`Set the value to (e.g. npm,yarn,pip)
--   CodeQL setup
-    -   <https://dev.classmethod.jp/articles/github-code-scanning/>
-    -   [supported language](https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/)
 
-</details>
+    GET api.v-sli.me/v1/posts?q=<SearchWord>
 
-## For Contributor 🤝
-
-If you would like to contribute to this project,[Contribution guide](docs/README.md)Please read.
-
-## Reference ✨
-
--   [doremire/Awesome-README](https://github.com/doremire/Awesome-README)
+`?q` : Search text : `string+string+string....`
