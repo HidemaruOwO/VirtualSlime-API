@@ -36,6 +36,7 @@ APP_ENV=production ./virtualslime
 -   `DOMAIN`: (필요) 문자열 값:`Your domain name (ex. v-sli.me)`
 -   `APP_ENV`: (제품에만 필요함) 문자열 값:`production`
 -   `PORT`: (선택 사항) int16 값:`App listen port (default: 3000)`
+-   `DEBUG`: (선택 사항) bool 값:`Make Debug Mode (ex. true or false, default: false)`
 
 ### 개발을 위해
 

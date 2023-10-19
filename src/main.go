@@ -47,7 +47,7 @@ func main() {
 
 	// Check Envrionment
 	log.Info("🔍 Checking $APP_ENV")
-	if os.Getenv("APP_ENV") == "production" {
+	if lib.APP_ENV == "production" {
 		log.Info("😀 Loading Production mode")
 		// Donwload articles cache
 		if err := lib.DownloadCache(); err != nil {
@@ -65,19 +65,16 @@ func main() {
 	} else {
 		log.Info("🛠️ Loading Development mode")
 		log.Info("🔍 Checking $VIRTUALSLIME_DIR")
-		if virtualSlimeDir := os.Getenv("VIRTUALSLIME_DIR"); virtualSlimeDir == "" {
+		if virtualSlimeDir := lib.VIRTUALSLIME_DIR; virtualSlimeDir == "" {
 			log.Critical(fmt.Errorf("Please set $VIRTUALSLIME_DIR"))
 		}
 	}
 	log.Info("🔍 Checking $DEBUG")
-	if os.Getenv("DEBUG") == "true" {
-		ISDEBUG = true
-	}
-	log.Info("DEBUG: %t", ISDEBUG)
+	log.Info("DEBUG: %t", lib.ISDEBUG)
 
 	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
-			if os.Getenv("APP_ENV") == "production" {
+			if lib.APP_ENV == "production" {
 				c.Response().Header().Set("Access-Control-Allow-Origin", lib.DOMAIN)
 				c.Response().Header().Set("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE")
 				c.Response().Header().Set("Access-Control-Allow-Headers", "*")
@@ -97,7 +94,7 @@ func main() {
 	e.GET("/v1/posts", func(c echo.Context) error {
 		var posts []Post
 
-		if os.Getenv("APP_ENV") == "production" {
+		if lib.APP_ENV == "production" {
 			cache := lib.ReadCache()
 			log.Debug(ISDEBUG, string(cache))
 
@@ -105,7 +102,7 @@ func main() {
 				log.Critical(err)
 			}
 		} else {
-			postDir := filepath.Join(os.Getenv("VIRTUALSLIME_DIR"), "posts")
+			postDir := filepath.Join(lib.VIRTUALSLIME_DIR, "posts")
 
 			log.Info(postDir)
 

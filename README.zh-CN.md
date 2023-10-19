@@ -36,6 +36,7 @@ APP_ENV=production ./virtualslime
 -   `DOMAIN`：（需要）字符串值：`Your domain name (ex. v-sli.me)`
 -   `APP_ENV`：（产品只需）字符串值：`production`
 -   `PORT`：（可选）int16 值：`App listen port (default: 3000)`
+-   `DEBUG`：（可选）布尔值：`Make Debug Mode (ex. true or false, default: false)`
 
 ### 为了发展
 
@@ -43,7 +44,7 @@ APP_ENV=production ./virtualslime
 
 ## API文档
 
--   /v1/帖子
+-   /v1/posts
 
 
     GET api.v-sli.me/v1/posts?q=<SearchWord>
