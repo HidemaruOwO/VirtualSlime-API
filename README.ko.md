@@ -1,84 +1,51 @@
-<div align="center">
+# VirtualSlime-API
 
-# 멋진 저장소 🎨
+## 용법
 
-<!-- s;HidemaruOwO/Awesome-Repository;User/Repository;g -->
+### 설정
 
-[![Test CLI](https://github.com/HidemaruOwO/Awesome-Repository/actions/workflows/test.yml/badge.svg)](https://github.com/HidemaruOwO/Awesome-Repository/actions/workflows/test.yml)![最終コミット](https://img.shields.io/github/last-commit/HidemaruOwO/Awesome-Repository?style=flat-square)![リポジトリのスター](https://img.shields.io/github/stars/HidemaruOwO/Awesome-Repository?style=flat-square)![問題](https://img.shields.io/github/issues/HidemaruOwO/Awesome-Repository?style=flat-square)![オープンな問題](https://img.shields.io/github/issues-raw/HidemaruOwO/Awesome-Repository?style=flat-square)![バグの問題](https://img.shields.io/github/issues/HidemaruOwO/Awesome-Repository/bug?style=flat-square)
+    git clone https://github.com/HidemaruOwO/VirtualSlime-API
+    cd VirtualSlime-API
 
-![image](https://github.com/HidemaruOwO/Awesome-Repository/assets/82384920/bf4ccddf-3eae-4fae-97f4-d2b59bec919f)
+    # Edit .env file
+    vim .env
 
-## 이게 뭐야?
-
-더 멋진 저장소 템플릿입니다.
-
-</div>
-
--   언어 선택
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:center"><a href="README.md">🎌日本語</a></th>
-      <th style="text-align:center"><a href="README.en.md">🤡English</a></th>
-      <th style="text-align:center"><a href="README.zh-CN.md">🐉简体中文</a></th>
-      <th style="text-align:center"><a href="README.zh-TW.md">🍜繁体中文</a></th>
-      <th style="text-align:center"><a href="README.ko.md">🌸한국어</a></th>
-    </tr>
-  </thead>
-</table>
-
-## 사용법 💨
-
-이 스크립트를 실행하십시오.
+### 테스트 개발(localhost:3001)
 
 ```bash
-./run.sh
+VIRTUALSLIME_DIR=~/Code/VirtualSlime DEBUG=true go run src/main.go
 ```
 
-## 설치 😊
+## 제품 사용
 
-이 스크립트를 실행하십시오.
+### 짓다
 
 ```bash
-./install.sh
+go build -ldflags="-s -w" -trimpath
+mv main virtualslime
 ```
 
-## 빌드🔨
+### 시작
 
 ```bash
-git clone https://github.com/HidemaruOwO/Awesome-Repository.git
-cd Awesome-Repository.git
-mkdir build && cd build
-go build ../build.sh
+APP_ENV=production ./virtualslime
 ```
 
-## 종속성 🪡
+## 환경
 
-이 앱을 사용하려면 다음 명령을 경로에 등록하십시오.
+-   `DOMAIN`: (필요) 문자열 값:`Your domain name (ex. v-sli.me)`
+-   `APP_ENV`: (제품에만 필요함) 문자열 값:`production`
+-   `PORT`: (선택 사항) int16 값:`App listen port (default: 3000)`
 
--   `git`
+### 개발을 위해
 
-## 저장소 도구 🔧
+-   `VIRTUALSLIME_DIR`: (개발에만 필요) 문자열 값:`VirtualSlime directory (ex. ~/Code/VirtualSlime)`
 
--   [ ] Dependabot 설정
--   [ ] CodeQL 설정
+## API 문서
 
-<details>
-<summary>メモ</summary>
+-   /v1/게시물
 
--   Dependabot 설정
-    -   `.github/dependabot.yml`의`package-ecosystem`에 값 설정(예: npm,yarn,pip)
--   CodeQL 설정
-    -   <https://dev.classmethod.jp/articles/github-code-scanning/>
-    -   [대응 언어](https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/)
 
-</details>
+    GET api.v-sli.me/v1/posts?q=<SearchWord>
 
-## 기여자용 🤝
-
-이 프로젝트에 컨트리뷰트하는 경우는[컨트리뷰트 가이드](docs/README.md)를 읽으십시오.
-
-## 참고 ✨
-
--   [doremire/Awesome-README](https://github.com/doremire/Awesome-README)
+`?q`: 검색 텍스트 :`string+string+string....`
