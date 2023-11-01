@@ -34,3 +34,9 @@ builds:
         goarch: arm
       - goos: freebsd
         goarch: arm64
+
+brews:
+  - repository:
+      owner: HidemaruOwO
+      name: homebrew-tap
+      token: "{{ .Env.TAP_GITHUB_TOKEN }}"
