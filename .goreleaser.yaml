@@ -36,7 +36,8 @@ builds:
         goarch: arm64
 
 brews:
-  - repository:
+  - name: virtualslime-api
+    repository:
       owner: HidemaruOwO
       name: homebrew-tap
       token: "{{ .Env.TAP_GITHUB_TOKEN }}"
